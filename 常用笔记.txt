@@ -1,0 +1,345 @@
+School food.  https://hkia-dev.stg.gobindo.com/Public/StoreMenus/6877
+
+添加商城ground_id. 找王忠详young
+
+dev下载地址：https://rink.hockeyapp.net/apps/e9d8dc7b93dd5376c52dcdd583225b8e/app_versions/2417
+
+
+第1000次测试完成    执行时间： Thu Aug 30 20:34:29 CST 2018
+执行时间为：330分
+测试执行成功次数：819
+测试执行失败次数：181
+driver 断开连接！
+
+
+测试案例参考：
+https://docs.google.com/spreadsheets/d/1RzsYI3Ol3CoWCPBjtyhUGQI-u0wPUYPS1WDH8znyE_E/edit?usp=sharing
+
+kiosk确认点：
+1.当购物车没有商品时，点击CART, 会弹出一个提示让用户先选产品，英文的提示是：Your cart is empty.但是中文是：至少选择一样，不太友好，需要业务给出一个友好的提示 2.当进入modifiers页面，顶部有个说明：自定义组合，觉得不是很合适，需不需要改成一个相对通熟易懂的提示说明，例如：多种组合选择
+3.中文模式下，打印的出小票是英文的，要不要加个英文打印模块？
+4.在 bindo POS 后台上架、下架新库存，前端没有更新，需手工去到机器上清除缓存才更新，是否需要实时或定时更新？需不需要制定一个更新策略？
+
+
+xcode-select --install
+启动模拟器
+xcrun instruments -w 'iPhone X'
+查看模拟器
+instruments -w device
+模拟器上安装
+xcrun simctl install booted Downloads/Payload/DPScope.app
+
+
+问题：
+
+An unknown server-side error occurred while processing the command. Original error: Could not create simulator with name 'appiumTest-Iphone X - 11.4', device type id 'Iphone X - 11.4' and runtime id '11.4'. Reason: 'simctl error running 'create': Invalid device type: Iphone X - 11.4'
+
+解决方法
+sudo xcode-select --switch /Applications/Xcode.app
+
+
+An unknown server-side error occurred while processing the command. Original error: Unable to launch WebDriverAgent because of xcodebuild failure: "xcodebuild failed with code 65".
+
+
+解决方法：-----
+bindodeMBP-2:WebDriverAgent bindo$ cd .//Appium.app/Contents/Resources/app/node_modules/appium/node_modules/appium-xcuitest-driver
+
+bindodeMBP-2:WebDriverAgent bindo$ ./Scripts/build.sh 
+
+open .//Appium.app/Contents/Resources/app/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent/WebDriverAgent.xcodeproj
+
+真机签名
+Xcode 打开：WebDriverAgent.xcodeproj
+webdriveragentlib 
+
+使用个人的开发者账号
+
+general 设置sighing  勾选：automatically manage signing 
+
+Build Settings 修改product bundle identifier 随便设置跟别人不会重复即可
+
+指定product ->
+
+解决完毕-----
+
+
+idevice_id -l
+# 或者使用 ideviceinfo 可以在返回的数据中找到 udid
+
+搞定webdriveragent
+brew install carthage
+brew install python
+brew install node
+git clone https://github.com/facebook/WebDriverAgent
+cd WebDriverAgent/
+./Scripts/bootstrap.sh 
+sudo easy_install pip
+pip install atx
+
+
+Open usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent/WebDriverAgent.xcodeproj
+
+//:configuration = Release
+CODE_SIGN_IDENTITY[sdk=iphoneos*] = iPhone Developer: 951328114@qq.com (2K668HRT53)
+
+获取bundleid
+ideviceinstaller -l
+
+Could not connect to lockdownd. Exiting.
+sudo chmod -R 777 /var/db/lockdown/
+
+重新连接一下手机
+
+brew uninstall ideviceinstaller
+brew uninstall libimobiledevice
+brew install --HEAD libimobiledevice
+brew link --overwrite libimobiledevice
+brew install ideviceinstaller
+brew link --overwrite ideviceinstaller
+
+
+Webdriveragent 下载地址：
+
+https://github.com/appium/appium-xcuitest-driver 
+
+https://github.com/facebook/WebDriverAgent 
+
+        "id": 6862,
+        "id": 6865,
+
+        "id": 6868,
+
+        "id": 6871,
+
+        "id": 6874,
+
+        "id": 6877,
+
+        "id": 6880,
+
+        "id": 6883,
+
+      "id": 7051,
+        "id": 7024,
+
+        "id": 7027,
+
+        "id": 7030,
+
+      "id": 7045,
+
+        "id": 6994,
+
+        "id": 7042,
+
+      "id": 7048,
+
+
+
+Chee kei  6868
+Movenpick   6871
+Old town white coffee 6874
+hungry korean 6877
+Street food mic by Alvin leung 6880
+Tai Hing 6883
+Burger King 6865
+Baikohken Ramen 6862
+Putien 7027
+Tasty Congee 7030
+East Hall 7045
+
+West Hal 7051
+Moon Thai 7024
+
+Tai Hing 6883
+
+6868
+
+5123450000000008",
+"
+
+o08vakz03xndguboa89hfyr6qwlkkvn
+d1riagtreaehvp3hl00ws8acn2v0ox0
+
+curl -X POST "https://dev-main.bindo.io/api/v2/listings/search" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"page\": 0, \"per_page\": 0, \"search\": { \"fields\": [ \"string\" ], \"filter\": { \"additionalProp1\": {}, \"additionalProp2\": {}, \"additionalProp3\": {} }, \"missing\": { \"additionalProp1\": {}, \"additionalProp2\": {}, \"additionalProp3\": {} }, \"page\": 0, \"per_page\": 0, \"query\": { \"additionalProp1\": {}, \"additionalProp2\": {}, \"additionalProp3\": {} }, \"range\": { \"additionalProp1\": {}, \"additionalProp2\": {}, \"additionalProp3\": {} }, \"sort\": { \"additionalProp1\": {}, \"additionalProp2\": {}, \"additionalProp3\": {} }, \"wildcard\": { \"additionalProp1\": {}, \"additionalProp2\": {}, \"additionalProp3\": {} } }}"
+
+
+curl -X GET "https://dev-main.bindo.io/api/v2/stores/12333/listings/12122/with_members" -H "accept: application/json"
+
+
+rich.chen@bindo.com
+
+c300CBafe8636F0a
+
+
+
+
+
+
+订单：
+https://gateway.trybindo.com/v2/stores/6865/invoices/201809261232227763170019/check
+
+listing：库存->筛选查找
+https://trybindo.com/api/v2/listings/search
+https://dev-main.bindo.io/api/v2/listings/search
+
+
+"credit_card":{
+"card_reader_mode":"swipe",
+"exp_year":"21",
+"exp_month":"05",
+"number":"5123450000000008",
+"cvv":"100",
+"holder":"",
+"note":""
+}
+                    "token":"b37b618bcd961b",
+
+
+{
+
+   "store_id":"6994",
+   "client_id":"n4v00d27uj3qj6iclblkhpf9o2o1dzw",
+   "client_secret":"n4v00d27uj3qj6iclblkhpf9o2o1dzw",
+   "user":
+   {"password":"5b074391eb40b93e5aeb3395b4832961",
+    "user_email":"phone-bindo-5b074391eb40b93e8aen3395b4832961-852-12345678912@hkia.com",
+    "full_name" :"852 12345678916"
+   }
+  
+}
+
+
+{
+    "username":"phone-bindo-6438894c49c56ed696231d8c96b5adf2-852-12345678919@hkia.com",
+    "password":"6438894c49c56ed696231d8c96b5adf2",
+    "grant_type":"6438894c49c56ed696231d8c96b5adf2",
+    "store_id":"6994",
+    "client_id":"n4v00d27uj3qj6iclblkhpf9o2o1dzw",
+    "client_secret":"wkkfmutebytoaqajwxnlblssu0w0no"
+}
+
+
+{
+    "number":"5123450000000008",
+    "exp_month":"05",
+    "exp_year":"21",
+    "holder":"abcdddd"
+}
+
+X-Request-Id: 6ec46fbe10333e84e2029d0e4b5a915b
+
+
+
+    "username":"phone-bindo-cece78dd58237dae9aea08a97448d971-852-12345678935@hkia.com",
+    "password":"cece78dd58237dae9aea08a97448d971",
+    "grant_type":"cece78dd58237dae9aea08a97448d971",
+    "store_id":"6994",
+    "client_id":"n4v00d27uj3qj6iclblkhpf9o2o1dzw",
+    "client_secret":"wkkfmutebytoaqajwxnlblssu0w0no"
+   
+}
+
+
+查看店铺
+Request URL: https://dev-main.bindo.io/api/v4/groups/7051/members   get
+
+
+
+添加信用卡： https://api.trybindo.com/credit_cards
+{"number":"5123450000000008","exp_month":"05","exp_year":"21","holder":"dddddd"}
+
+
+
+查看订单：
+invoices
+https://gateway.trybindo.com/api/v4/super_stores/6994/invoices
+
+{"order":{"sale_type":"register_sale","customer_id":18612607,"line_items":[{"id":6877,"uuid":"34809a54-979b-47e1-82a3-1d0364157af0","shipping_method":0,"department_id":null,"favorite_id":107686,"favorite_tab_id":76390,"favorite_section_id":75784,"purchasable_type":"Listing","purchasable_id":25043977,"label":"Kimchi Bokkeumbap","price":102,"quantity":1,"quantity_allow_decimal":2,"group_id":1538039736,"modifier_entries":[{"uuid":"d17269dc-ad1d-43e2-8172-ef217cdd6559","modifier_set_option_id":8947,"modifier_option_name":"Pepsi (22oz)","price":"0","quantity":1,"unit_quantity":1,"enable_credit_pool":false,"modifier_entries":[]}],"tax_option_entries":[],"tax_base_adjustment_amount":0,"taxable_amount":102,"tax_amount":0,"add_on_tax_amount":0,"inclusive_tax_amount":0,"service_fee":0,"discount_entries":[],"discount_total":0,"subtotal":102,"total":102,"store_id":6877,"userSelectedOrder":true}],"sub_orders":[{"store_id":6877,"from":4,"sale_type":"invoice_sale","due_date":"2018-10-04","shipping_method":2,"line_items":[{"id":6877,"uuid":"3bd7bd9c-eb73-4652-b0e6-377eaedb9557","shipping_method":0,"department_id":null,"favorite_id":107686,"favorite_tab_id":76390,"favorite_section_id":75784,"purchasable_type":"Listing","purchasable_id":25043977,"label":"Kimchi Bokkeumbap","price":102,"quantity":1,"quantity_allow_decimal":2,"group_id":1538039736,"modifier_entries":[{"uuid":"8f006dc3-738f-4b1f-bfec-d53c9ad0dd5e","modifier_set_option_id":8947,"modifier_option_name":"Pepsi (22oz)","price":"0","quantity":1,"unit_quantity":1,"enable_credit_pool":false,"modifier_entries":[]}],"tax_option_entries":[],"tax_base_adjustment_amount":0,"taxable_amount":102,"tax_amount":0,"add_on_tax_amount":0,"inclusive_tax_amount":0,"service_fee":0,"discount_entries":[],"discount_total":0,"subtotal":102,"total":102,"store_id":6877,"userSelectedOrder":true}],"voided_line_items":[],"number_of_items":1,"number_of_listing_items":1,"discount_total":0,"tax_base_adjustment":0,"taxable_amount":102,"initial_tax":0,"initial_normal_tax":0,"initial_included_in_price_tax":0,"initial_service_fee":0,"subtotal":102,"initial_total":102,"initial_provided_in_request":true,"initial_product_total":0,"initial_included_in_price_tax_for_service_fee":0,"initial_redeem_deposits":0,"initial_tips":0,"initial_tax_rounding":0,"initial_rounding":0,"initial_service_fee_rounding":0,"title":"Hungry Korean","logo_url":"https://d25i28iur6fb9a.cloudfront.net/store_pictures/1489/medium/7.png?1538039729","userSelectedOrder":true}]}}
+
+
+order_correspondences
+Request URL: https://gateway.trybindo.com/api/v4/super_stores/6994/order_correspondences?per_page=20
+
+
+
+
+支付:
+Pay
+ https://gateway.trybindo.com/api/v4/super_stores/6994/invoices/201809271723152630233424/pay
+request:
+{"ignore_printing":true,"order":{"payment":{"credit_cards":[{"amount":"102.0","card_reader_mode":"manual","token":"6685df18acd1fa","exp_year":"21","exp_month":"05"}]}}}
+
+Response
+{"order":{"id":2700439,"store_id":6994,"number":"201809271723152630233424","reference_number":"000690","initial_total":"102.0","state":"completed","sub_orders":[{"id":2700442,"store_id":6877,"number":"201809271723156276846311","reference_number":"G0009","initial_total":"102.0","state":"completed"}],"logo_url":null,"icon_url":null,"tax_line_item":null,"rounding_line_item":null,"delivery_line_item":null,"octopus_value_line_items":[],"listing_line_items":[{"id":8393989,"order_id":2700439,"store_id":6877,"origin_line_item_id":null,"purchasable_type":"Listing","purchasable_id":25043977,"gift_card_id":null,"price":"102.0","unit_price":"102.0","original_price":null,"note":null,"kitchen_note":null,"fulfilment_note":null,"quantity":1,"total":"102.0","base_unit_id":null,"base_unit":null,"unit_id":null,"unit":null,"unit_quantity":1,"display_unit_ratio":null,"price_per_unit":null,"amount_refunded":"0.0","amount_lefted":"102.0","label":"Kimchi Bokkeumbap","shipping_method":0,"tax_rate":null,"cashier_id":null,"cashier_name":null,"serial_number":null,"inventory_state":"fulfilled","qty_fulfilled":1,"qty_fulfilled_in_display_unit":1,"qty_refunded":0,"qty_refunded_in_display_unit":0,"tax_option_id":null,"tax_name":null,"line_item_status_id":-1,"line_item_status_name":"Order Received","line_item_status_created_at":"2018-09-27T05:23:15-04:00","line_item_code":"201809271723152630233424LIC8393989","line_item_code_active":true,"department_id":null,"listing_barcode":null,"favorite_tab_id":76390,"favorite_section_id":75784,"favorite_id":107686,"refund_entries":[],"discount_entries":[],"modifier_entries":[{"id":366073,"quantity":"1.0","unit_quantity":"1.0","price":"0.0","modifier_group_name":null,"modifier_name":"Set Drinks","modifier_type":null,"modifier_option_name":"Pepsi (22oz)","modifier_option_id":null,"modifier_set_option_id":8947,"modifier_set_option_code":null,"prefix_modifier_set_option_id":null,"enable_credit_pool":false,"department_id":null,"uuid":"d17269dc-ad1d-43e2-8172-ef217cdd6559","priority":null,"modifier_entries":[]}],"tag_entries":[],"tax_option_entries":[],"created_at":"2018-09-27T05:23:15-04:00","updated_at":"2018-09-27T05:23:15-04:00","deleted":false,"tax_amount":"0.0","subtotal":"102.0","discount_total":"0.0","tax_base_adjustment_amount":"0.0","add_on_tax_amount":"0.0","inclusive_tax_amount":"0.0","include_tax_price":null,"modifier_set_option_id":null,"tax_in_price_rounding_error":"0.0","rounding_amount":"0.0","split_error":"0.0","group_id":1538039736,"table_seat":null,"uuid":"34809a54-979b-47e1-82a3-1d0364157af0","price_option_id":null,"price_option_name":null,"effective_created_at":"2018-09-27T05:23:15-04:00","voided":false,"description":null,"kitchen_alias_name":null,"cumulative_refund_qty":0,"cumulative_refund_amount":"0.0","regular_total":null,"origin_order_number":null,"refund_order_nums":[],"sent_to_kitchen":false,"sent_to_kitchen_count":0,"courier":null,"store_device":null,"octopus_card_number":null,"octopus_reader_number":null,"octopus_remaining_value":null,"octopus_last_add_date":null,"octopus_last_add_type":null,"octopus_last_add_device_id":null,"octopus_completion_time":null}],"charge_line_items":[],"adjustment_line_items":[],"store_credit_line_items":[],"reward_line_items":[],"gift_card_line_items":[],"service_fee_line_item":[],"tips_line_items":[{"id":8393995,"order_id":2700439,"store_id":6994,"origin_line_item_id":null,"purchasable_type":"Tips","purchasable_id":null,"gift_card_id":null,"price":"0.0","unit_price":"0.0","original_price":null,"note":null,"kitchen_note":null,"fulfilment_note":null,"quantity":1,"total":"0.0","base_unit_id":null,"base_unit":null,"unit_id":null,"unit":null,"unit_quantity":1,"display_unit_ratio":null,"price_per_unit":null,"amount_refunded":"0.0","amount_lefted":"0.0","label":"Tips","shipping_method":0,"tax_rate":null,"cashier_id":null,"cashier_name":null,"serial_number":null,"inventory_state":"fulfilled","qty_fulfilled":1,"qty_fulfilled_in_display_unit":1,"qty_refunded":0,"qty_refunded_in_display_unit":0,"tax_option_id":null,"tax_name":null,"line_item_status_id":null,"line_item_status_name":null,"line_item_status_created_at":null,"line_item_code":"201809271723152630233424LIC8393995","line_item_code_active":true,"department_id":null,"listing_barcode":null,"favorite_tab_id":null,"favorite_section_id":null,"favorite_id":null,"refund_entries":[],"discount_entries":[],"modifier_entries":[],"tag_entries":[],"tax_option_entries":[],"created_at":"2018-09-27T05:23:18-04:00","updated_at":"2018-09-27T05:23:18-04:00","deleted":false,"tax_amount":"0.0","subtotal":"0.0","discount_total":null,"tax_base_adjustment_amount":null,"add_on_tax_amount":null,"inclusive_tax_amount":null,"include_tax_price":null,"modifier_set_option_id":null,"tax_in_price_rounding_error":"0.0","rounding_amount":"0.0","split_error":"0.0","group_id":null,"table_seat":null,"uuid":"de5801b5-bc59-405d-a8de-ad3d8259b0eb","price_option_id":null,"price_option_name":null,"effective_created_at":"2018-09-27T05:23:18-04:00","voided":false,"description":null,"kitchen_alias_name":null,"cumulative_refund_qty":0,"cumulative_refund_amount":"0.0","regular_total":null,"origin_order_number":null,"refund_order_nums":[],"sent_to_kitchen":false,"sent_to_kitchen_count":0,"courier":null,"store_device":null,"octopus_card_number":null,"octopus_reader_number":null,"octopus_remaining_value":null,"octopus_last_add_date":null,"octopus_last_add_type":null,"octopus_last_add_device_id":null,"octopus_completion_time":null}],"voucher_discount_line_items":[],"deposit_line_items":[],"deposit_redeem_line_items":[],"deposit_forfeit_line_items":[],"sale_transactions":[{"id":29550871,"source_id":2700439,"source_type":"Order","cashier_id":14851,"cashier_name":"852 1.","created_at":"2018-09-27T05:23:17-04:00","voided_at":null,"transaction_type":"SALE","success":true,"payment_method":8,"credit_card_id":542281,"amount":"102.0","tips_amount":"0.0","change_amount":null,"store_id":6994,"merchant_account_id":621,"from":null,"fee_cc_processing":"2.81","fee_commission":"0.0","fee_cc_transaction":"0.25","fee_cc_refund":"0.0","signature_required":false,"validation_errors":[],"octopus_card_number":null,"octopus_reader_number":null,"octopus_remaining_value":null,"octopus_last_add_date":null,"octopus_last_add_type":null,"octopus_last_add_device_id":null,"payment_instrument_id":163807,"actual_payment_amount":"102.0","remaining_amount":null,"extra":{"holder_name":"dddddd","last_4_digits":"0008","first_6_digits":"512345","credit_card_type":"master card"},"reference_id":"745636479178375168","approval_code":null,"authorization":null,"status_code":null,"status_message":null,"entry_mode":"KEYED","payment":"Credit Card Not Present","walk_in_buyer":"[Card-Not-Present]","signature_acquired":false,"amount_lefted":"102.0","email":null,"merchant_account_payment_gateway_vendor":"mpgs","note":null,"currency":"USD","uuid":"c18aff43-c11e-437e-9bcb-026d7e27473e","reference_number":null,"store_credit_customer":null,"allow_add_tips":true,"allow_modify_payment_method":false,"allow_void_payment":true,"external_card_number":null,"is_pending":false,"acquirer_response_body":null,"payment_data":{"merchant_id":"549915204000099","terminal_id":"","batch_no":"000001","trace_no":"000138","brn":"29550871","auth_code":"607973","rrn":"153804019741","acquirer_type":"fake","card_read_mode":"manual","request_token":""},"captured":false,"is_offline":false,"capture_amount":"102.0"}],"refund_transactions":[],"reversal_transactions":[],"void_transactions":[],"auth_transactions":[],"paid_total":"102.0"}}
+
+
+
+
+
+
+
+
+
+
+
+
+SSH登录
+/Users/bindo/.ssh
+TJJiPad:.ssh bindo$ cat id_rsa.pub
+
+ping jumpbox.tw.stg.bindolabs.com
+
+
+_Bindo_session	
+
+x
+ssh deploy@web1-api.c.bindo-staging-tw.internal
+ssh deploy@web2-api.c.bindo-staging-tw.internal
+ssh deploy@worker1-api.c.bindo-staging-tw.internal
+ssh deploy@worker2-api.c.bindo-staging-tw.internal
+
+
+
+https://fir.im/wyhf
+https://fir.im/c7eq
+
+
+store id: 6871 的 listing_id: 25043845 只可以堂食，25043836 只可以 pickup，25057438 堂食和 pickup 都可以
+
+
+我先說一下背景：
+1. 手機下單部份，如果接收下單的store是酒店的話，除了bindo pos master之外，還需要把order 的資料，經過一個bindo 的middle ware ，然後傳送到 酒店的pms 系統
+2. 現在我們把傳送資料的部份，由faye 改成 ably，因此我們需要進行測試
+3. 在server 和 版本都準備好之後，我這邊會先進行基本功能的測試，pass 了以後，想由你們6這邊批量下單來進行壓力測試
+
+
+
+
+
+
+
+Dockyard.stg.gobindo.com
+Dockyard-beta.gobindo.com   這是prod 的
+
+
+
+Pickup display
+
+https://rink.hockeyapp.net/apps/04e7394f4a414eaaad4d7c5f55821c89/app_versions/1
+
+Longly
+https://bindo.loggly.com/password_reset_confirm_new_user/MTc0MDQ1/513-ea496821ae81dea74623/
+
+
+http://galaxy.stg.gobindo.com/module/7135/250/64/module/editor/form
+
+
+[bulid 14] 版本验证OK， 小票打印空白和切半的问题已解决。配对设备失败后暂时没发现崩溃问题，这个版本相对比较稳定可用。下载地址：https://fir.im/qpf4
+
+
+
+
+
+
+

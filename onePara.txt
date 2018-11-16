@@ -1,0 +1,14 @@
+CaseName:testone
+install 
+Step, ID, android:id/button2, CLICK
+Step, TEXT, Bindo ID / Email, INPUT, paul.wang@bindo.com
+
+
+
+
+
+
+
+
+
+
